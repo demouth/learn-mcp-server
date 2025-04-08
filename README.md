@@ -1,5 +1,8 @@
 # learn-mcp-server
 
+This repository provides a simple MCP (Model Context Protocol) server implementation for educational purposes.
+The server supports basic arithmetic operations (addition, subtraction, multiplication, division), and this README describes how to use it from Claude Desktop.
+
 ## step 1
 
 Build source code from this repository.
