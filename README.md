@@ -48,3 +48,10 @@ Logs are output to the following directory:
 ```
 ~/Library/Logs/Claude/
 ```
+
+The following log will be output:
+
+```
+2025-04-08T15:08:36.443Z [calculator] [info] Message from client: {"method":"tools/call","params":{"name":"calculate","arguments":{"operation":"multiply","x":1234,"y":56789}},"jsonrpc":"2.0","id":35}
+2025-04-08T15:08:36.443Z [calculator] [info] Message from server: {"jsonrpc":"2.0","id":35,"result":{"content":[{"type":"text","text":"70077626.00"}]}}
+```
