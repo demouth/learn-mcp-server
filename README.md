@@ -41,6 +41,8 @@ What is the answer to the following formula?
 1234 x 56789
 ```
 
+![screenshot](screenshot.png)
+
 Logs are output to the following directory:
 
 ```
