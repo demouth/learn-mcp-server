@@ -5,6 +5,7 @@ import (
 	"errors"
 	"fmt"
 
+	"github.com/google/uuid"
 	"github.com/mark3labs/mcp-go/mcp"
 	"github.com/mark3labs/mcp-go/server"
 )
@@ -14,8 +15,8 @@ import (
 func main() {
 	// Create a new MCP server
 	s := server.NewMCPServer(
-		"Calculator Demo",
-		"1.0.0",
+		"Calculator and UUID Generator Demo",
+		"1.1.0",
 		server.WithResourceCapabilities(true, true),
 		server.WithLogging(),
 	)
@@ -60,6 +61,22 @@ func main() {
 		}
 
 		return mcp.NewToolResultText(fmt.Sprintf("%.2f", result)), nil
+	})
+
+	// Add a UUID generator tool
+	uuidTool := mcp.NewTool("generate_uuid",
+		mcp.WithDescription("Generate a UUID"),
+		mcp.WithString("version",
+			mcp.Description("UUID version to generate (v4 is random)"),
+			mcp.Enum("v4"),
+		),
+	)
+
+	// Add the UUID generator handler
+	s.AddTool(uuidTool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
+		// Currently only supporting v4 (random) UUIDs
+		newUUID := uuid.New().String()
+		return mcp.NewToolResultText(newUUID), nil
 	})
 
 	// Start the server
